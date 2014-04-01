@@ -2,17 +2,20 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "Microblog" }
-
   describe "Home page" do
     it "should have the content 'Microblog'" do
       visit '/static_pages/home'
       expect(page).to have_content('Microblog')
     end
 
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/home'
-      expect(page).to have_title("Home » #{base_title}")
+      expect(page).to have_title("Microblog")
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title("Home")
     end
   end
 
@@ -22,9 +25,9 @@ describe "Static pages" do
       expect(page).to have_content('Help')
   	end
 
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/help'
-      expect(page).to have_title("Help » #{base_title}")
+      expect(page).to have_title("Microblog")
     end
   end
 
@@ -34,9 +37,9 @@ describe "Static pages" do
       expect(page).to have_content('About us')
     end
 
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/about'
-      expect(page).to have_title("About us » #{base_title}")
+      expect(page).to have_title("Microblog")
     end
   end
 
@@ -46,9 +49,9 @@ describe "Static pages" do
       expect(page).to have_content('Contact')
     end
 
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/contact'
-      expect(page).to have_title("Contact » #{base_title}")
+      expect(page).to have_title("Microblog")
     end
   end
 
