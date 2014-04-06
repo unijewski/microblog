@@ -3,6 +3,6 @@ def full_title(page_title)
     if page_title.empty?
       base_title
     else
-      "#{page_title} &raquo; #{base_title}".html_safe
+      "#{page_title} » #{base_title}".html_safe
     end
 end
